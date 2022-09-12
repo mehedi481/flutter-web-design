@@ -7,16 +7,18 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      width: double.infinity,
-      child: SingleChildScrollView(
-        child: Column(children: [
-          Stack(children: [
-            Container(),
-          ],),
-          const Header(),
-        ]),
+    return Scaffold(
+      body: SizedBox(
+        height: MediaQuery.of(context).size.height,
+        width: double.infinity,
+        child: SingleChildScrollView(
+          child: Column(children: [
+            Stack(children: [
+              Container(),
+            ],),
+            const Header(),
+          ]),
+        ),
       ),
     );
   }
