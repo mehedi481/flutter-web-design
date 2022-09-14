@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web_design/profile_title.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'header.dart';
+import 'info_palette.dart';
 import 'profile_image.dart';
 
 class HomePage extends StatelessWidget {
@@ -71,12 +72,12 @@ class HomePage extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 30.0,
                                   ),
                                   Row(
                                     children: [
-                                      Container(
+                                      SizedBox(
                                         height: 45.0,
                                         width: 230.0,
                                         child: TextField(
@@ -92,7 +93,7 @@ class HomePage extends StatelessWidget {
                                           ),
                                         ),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 20,
                                       ),
                                       TextButton(
@@ -104,7 +105,7 @@ class HomePage extends StatelessWidget {
                                           ),
                                         ),
                                         onPressed: () {},
-                                        child: Container(
+                                        child: SizedBox(
                                           height: 45.0,
                                           width: 100.0,
                                           child: Center(
@@ -160,7 +161,6 @@ class HomePage extends StatelessWidget {
                             image:
                                 "https://images.unsplash.com/photo-1554727242-741c14fa561c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
                           ),
-                          
                           ProfileTitle(
                             top: 140,
                             left: 50,
@@ -196,6 +196,91 @@ class HomePage extends StatelessWidget {
                 ),
                 const Header(),
               ],
+            ),
+            Container(
+              height: 400,
+              width: double.infinity,
+              color: Colors.white,
+              child: Stack(
+                children: [
+                  Positioned(
+                    right: -200,
+                    child: Container(
+                      height: 330,
+                      width: 430,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[100],
+                        borderRadius: BorderRadius.circular(300.0),
+                      ),
+                    ),
+                  ),
+                  Column(
+                    children: [
+                      Text(
+                        "How it works",
+                        style: GoogleFonts.nunito(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 40.0,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: const [
+                          InfoPalette(
+                            title: 'Community',
+                            text:
+                                'Communicate with collegues, share ideas, find a team in project in one space',
+                            icon: Icons.people_alt_rounded,
+                          ),
+                          InfoPalette(
+                            title: 'Overview Reports',
+                            text:
+                                'Track your progress thanks to the reporting system right inside the platform',
+                            icon: Icons.pie_chart_rounded,
+                          ),
+                          InfoPalette(
+                            title: 'DashBoard',
+                            text:
+                                'Manage your projects and tasks by tracking activity on the dashboard',
+                            icon: Icons.person_rounded,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 60.0,
+                      ),
+                      TextButton(
+                        style: TextButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          primary: Colors.black87,
+                          padding: const EdgeInsets.all(0.0),
+                        ),
+                        onPressed: () {},
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 30.0,
+                            vertical: 8.0,
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(40.0),
+                            border: Border.all(color: Colors.grey[800]!),
+                          ),
+                          child: Text(
+                            "Explore More",
+                            style: GoogleFonts.nunito(
+                              fontSize: 12.0,
+                              fontWeight: FontWeight.w800,
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
           ]),
         ),
