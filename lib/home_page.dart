@@ -282,6 +282,109 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
+            Container(
+              height: 500.0,
+              width: MediaQuery.of(context).size.width,
+              color: Colors.white,
+              child: Stack(clipBehavior: Clip.none, children: [
+                Positioned(
+                  left: -250.0,
+                  child: Container(
+                    height: 450.0,
+                    width: 700.0,
+                    decoration: BoxDecoration(
+                      color: Colors.amber[400],
+                      borderRadius: BorderRadius.circular(400.0),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  top: 20.0,
+                  left: 100.0,
+                  child: Container(
+                    height: 400.0,
+                    width: 700.0,
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    child: Image.network(
+                      "https://miro.medium.com/max/2400/0*qO2PFu6dr04R1O6P.png",
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                const ProfileTitle(
+                  top: 20,
+                  left: 40,
+                  title: "Send a final design to the team",
+                  subTitle: "Sara,Client",
+                  factor: 1.0,
+                ),
+                const ProfileTitle(
+                  top: 400.0,
+                  left: 620.0,
+                  title: "Publish your project whenever you want",
+                  subTitle: "Micheal",
+                  factor: 1.0,
+                ),
+                Positioned(
+                  right: 100.0,
+                  top: 150.0,
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Easy Project Management",
+                          style: GoogleFonts.nunito(
+                            fontWeight: FontWeight.w800,
+                            fontSize: 25.0,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 15.0,
+                        ),
+                        Container(
+                          width: 280.0,
+                          child: Text(
+                            "Manage your project,Organize your own workspace,keep statistics and collaborate with your teammates in one place",
+                            style: GoogleFonts.nunito(
+                              fontWeight: FontWeight.w400,
+                              color: Colors.black54,
+                              fontSize: 14.0,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20.0,
+                        ),
+                        TextButton(
+                          style: TextButton.styleFrom(
+                            backgroundColor: Colors.black87,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(100.0),
+                            ),
+                          ),
+                          onPressed: () {},
+                          child: SizedBox(
+                            height: 45.0,
+                            width: 100.0,
+                            child: Center(
+                              child: Text(
+                                "Try for free",
+                                style: GoogleFonts.nunito(
+                                  color: Colors.white,
+                                  fontSize: 12.0,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ]),
+                )
+              ]),
+            )
           ]),
         ),
       ),
