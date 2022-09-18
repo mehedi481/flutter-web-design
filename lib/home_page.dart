@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'header.dart';
 import 'info_palette.dart';
 import 'profile_image.dart';
+import 'testimonial_tile.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -382,6 +383,178 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                       ]),
+                )
+              ]),
+            ),
+            Container(
+              height: 600.0,
+              width: MediaQuery.of(context).size.width,
+              color: Colors.white,
+              child: Stack(children: [
+                Align(
+                  child: Column(children: [
+                    Text(
+                      "Be in the community",
+                      style: GoogleFonts.nunito(
+                        fontWeight: FontWeight.w800,
+                        fontSize: 25.0,
+                      ),
+                    ),
+                    Text(
+                      "Meet New people and leave testimonials about your teamates",
+                      style: GoogleFonts.nunito(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14.0,
+                      ),
+                    ),
+                  ]),
+                ),
+                Align(
+                  alignment: const Alignment(0.0, 0.0),
+                  child: Container(
+                      child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Stack(
+                        clipBehavior: Clip.none,
+                        children: [
+                          Positioned(
+                            left: -70,
+                            top: -60,
+                            child: Icon(
+                              Icons.format_quote,
+                              color: Colors.grey[300],
+                              size: 150.0,
+                            ),
+                          ),
+                          Text(
+                            "Execellent",
+                            style: GoogleFonts.nunito(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 30.0,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20.0,
+                      ),
+                      Container(
+                        width: 360.0,
+                        child: Text(
+                          "To the Freelancer, I Found a tema for a project during one i met new cool specialist,and projects management has become much faster and simple",
+                          style: GoogleFonts.nunito(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14.0,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10.0,
+                      ),
+                      Text(
+                        "Commnet details",
+                        style: GoogleFonts.nunito(
+                          fontWeight: FontWeight.w800,
+                          fontSize: 14.0,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      Container(
+                        height: 1.5,
+                        width: 100.0,
+                        color: Colors.black87,
+                      ),
+                    ],
+                  )),
+                ),
+                const TestimonialTile(
+                  left: 780.0,
+                  top: 100.0,
+                  leftAlign: false,
+                  image:
+                      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
+                ),
+                const TestimonialTile(
+                  left: 840.0,
+                  top: 400.0,
+                  leftAlign: false,
+                  image:
+                      "https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=699&q=80",
+                ),
+                const TestimonialTile(
+                  left: 440.0,
+                  top: 400.0,
+                  leftAlign: true,
+                  image:
+                      "https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1476&q=80",
+                ),
+                Positioned(
+                  right: 280.0,
+                  top: 300.0,
+                  child: Container(
+                    height: 60.0,
+                    width: 60.0,
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(60.0),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black12,
+                          blurRadius: 20.0,
+                          offset: Offset(
+                            0.0,
+                            10.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Positioned(
+                  right: 250.0,
+                  top: 450.0,
+                  child: Container(
+                    height: 20.0,
+                    width: 20.0,
+                    decoration: BoxDecoration(
+                      color: Colors.amber,
+                      borderRadius: BorderRadius.circular(60.0),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black12,
+                          blurRadius: 20.0,
+                          offset: Offset(
+                            0.0,
+                            10.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Positioned(
+                  right: 250.0,
+                  top: 200.0,
+                  child: Container(
+                    height: 20.0,
+                    width: 20.0,
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(60.0),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black12,
+                          blurRadius: 20.0,
+                          offset: Offset(
+                            0.0,
+                            10.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 )
               ]),
             )
