@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_design/profile_title.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'footer.dart';
 import 'header.dart';
 import 'info_palette.dart';
 import 'profile_image.dart';
@@ -556,6 +557,97 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 )
+              ]),
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: 600.0,
+              color: Colors.blue,
+              child: Stack(children: [
+                Align(
+                  alignment: Alignment(0.0, 1.0),
+                  child: Container(
+                    height: 600.0,
+                    width: 400.0,
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: 80.0,
+                          ),
+                          Text(
+                            "Get Started Today",
+                            style: GoogleFonts.josefinSans(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 35.0,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 20.0,
+                          ),
+                          Text(
+                            "Freelancer - community of people who values their time",
+                            style: GoogleFonts.josefinSans(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 15.0,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              TextButton(
+                                onPressed: () {},
+                                style: TextButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(40.0),
+                                  ),
+                                  backgroundColor: Colors.white,
+                                  padding: const EdgeInsets.all(10.0),
+                                ),
+                                child: Text(
+                                  "Get my Price",
+                                  style: GoogleFonts.josefinSans(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w800,
+                                    fontSize: 12.0,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 20.0,
+                              ),
+                              TextButton(
+                                onPressed: () {},
+                                style: TextButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(40.0),
+                                  ),
+                                  backgroundColor: Colors.white,
+                                  padding: const EdgeInsets.all(10.0),
+                                ),
+                                child: Text(
+                                  "Try it free",
+                                  style: GoogleFonts.josefinSans(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w800,
+                                    fontSize: 12.0,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ]),
+                  ),
+                ),
+                // const Positioned(
+                //   bottom: 0.0,
+                //   child: Footer(),
+                // )
               ]),
             )
           ]),
