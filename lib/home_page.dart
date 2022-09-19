@@ -562,17 +562,17 @@ class HomePage extends StatelessWidget {
             Container(
               width: MediaQuery.of(context).size.width,
               height: 600.0,
-              color: Colors.blue,
+              color: const Color.fromARGB(255, 4, 66, 117),
               child: Stack(children: [
                 Align(
-                  alignment: Alignment(0.0, 1.0),
+                  alignment: const Alignment(0.0, 1.0),
                   child: Container(
                     height: 600.0,
                     width: 400.0,
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             height: 80.0,
                           ),
                           Text(
@@ -644,10 +644,27 @@ class HomePage extends StatelessWidget {
                         ]),
                   ),
                 ),
-                // const Positioned(
-                //   bottom: 0.0,
-                //   child: Footer(),
-                // )
+                const Positioned(
+                  bottom: 0.0,
+                  child: Footer(),
+                ),
+                Align(
+                  alignment: const Alignment(1.18, 0.0),
+                  child: Container(
+                    height: 200.0,
+                    width: 200.0,
+                    decoration: BoxDecoration(
+                        color: Colors.amber[400],
+                        borderRadius: BorderRadius.circular(100.0),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 10.0,
+                            offset: Offset(0.0, 5.0),
+                          )
+                        ]),
+                  ),
+                ),
               ]),
             )
           ]),
