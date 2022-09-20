@@ -8,8 +8,27 @@ import 'info_palette.dart';
 import 'profile_image.dart';
 import 'testimonial_tile.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  late ScrollController _scrollController;
+  double pixels = 0.0;
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+    _scrollController.addListener(() {
+      setState(() {
+        pixels = _scrollController.position.pixels;
+        print(_scrollController.position.pixels);
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +37,7 @@ class HomePage extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         width: double.infinity,
         child: SingleChildScrollView(
+          controller: _scrollController,
           child: Column(children: [
             Stack(
               children: [
@@ -228,53 +248,68 @@ class HomePage extends StatelessWidget {
                       const SizedBox(
                         height: 40.0,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: const [
-                          InfoPalette(
-                            title: 'Community',
-                            text:
-                                'Communicate with collegues, share ideas, find a team in project in one space',
-                            icon: Icons.people_alt_rounded,
+                      AnimatedOpacity(
+                        duration: const Duration(milliseconds: 700),
+                        opacity: pixels >= 100 ? 1.0 : 0.0,
+                        child: AnimatedPadding(
+                          duration: const Duration(milliseconds: 700),
+                          padding: EdgeInsets.only(
+                              left: pixels >= 100 ? 0.0 : 100.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: const [
+                              InfoPalette(
+                                title: 'Community',
+                                text:
+                                    'Communicate with collegues, share ideas, find a team in project in one space',
+                                icon: Icons.people_alt_rounded,
+                              ),
+                              InfoPalette(
+                                title: 'Overview Reports',
+                                text:
+                                    'Track your progress thanks to the reporting system right inside the platform',
+                                icon: Icons.pie_chart_rounded,
+                              ),
+                              InfoPalette(
+                                title: 'DashBoard',
+                                text:
+                                    'Manage your projects and tasks by tracking activity on the dashboard',
+                                icon: Icons.person_rounded,
+                              ),
+                            ],
                           ),
-                          InfoPalette(
-                            title: 'Overview Reports',
-                            text:
-                                'Track your progress thanks to the reporting system right inside the platform',
-                            icon: Icons.pie_chart_rounded,
-                          ),
-                          InfoPalette(
-                            title: 'DashBoard',
-                            text:
-                                'Manage your projects and tasks by tracking activity on the dashboard',
-                            icon: Icons.person_rounded,
-                          ),
-                        ],
+                        ),
                       ),
                       const SizedBox(
                         height: 60.0,
                       ),
-                      TextButton(
-                        style: TextButton.styleFrom(
-                          backgroundColor: Colors.white,
-                          primary: Colors.black87,
-                          padding: const EdgeInsets.all(0.0),
-                        ),
-                        onPressed: () {},
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 30.0,
-                            vertical: 8.0,
+                      AnimatedContainer(
+                        duration: const Duration(milliseconds: 750),
+                        transform: pixels >= 100
+                            ? Matrix4.rotationZ(0)
+                            : Matrix4.rotationZ(90),
+                        child: TextButton(
+                          style: TextButton.styleFrom(
+                            backgroundColor: Colors.white,
+                            primary: Colors.black87,
+                            padding: const EdgeInsets.all(0.0),
                           ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(40.0),
-                            border: Border.all(color: Colors.grey[800]!),
-                          ),
-                          child: Text(
-                            "Explore More",
-                            style: GoogleFonts.nunito(
-                              fontSize: 12.0,
-                              fontWeight: FontWeight.w800,
+                          onPressed: () {},
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 30.0,
+                              vertical: 8.0,
+                            ),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40.0),
+                              border: Border.all(color: Colors.grey[800]!),
+                            ),
+                            child: Text(
+                              "Explore More",
+                              style: GoogleFonts.nunito(
+                                fontSize: 12.0,
+                                fontWeight: FontWeight.w800,
+                              ),
                             ),
                           ),
                         ),
@@ -300,9 +335,10 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Positioned(
+                AnimatedPositioned(
+                  duration: const Duration(milliseconds: 600),
                   top: 20.0,
-                  left: 100.0,
+                  left: pixels >= 550 ? 100.0 : 0.0,
                   child: Container(
                     height: 400.0,
                     width: 700.0,
@@ -331,8 +367,9 @@ class HomePage extends StatelessWidget {
                   subTitle: "Micheal",
                   factor: 1.0,
                 ),
-                Positioned(
-                  right: 100.0,
+                AnimatedPositioned(
+                  duration: const Duration(milliseconds: 600),
+                  right: pixels >= 550 ? 100.0 : -200.0,
                   top: 150.0,
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -410,65 +447,72 @@ class HomePage extends StatelessWidget {
                     ),
                   ]),
                 ),
-                Align(
-                  alignment: const Alignment(0.0, 0.0),
-                  child: Container(
-                      child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Stack(
-                        clipBehavior: Clip.none,
-                        children: [
-                          Positioned(
-                            left: -70,
-                            top: -60,
-                            child: Icon(
-                              Icons.format_quote,
-                              color: Colors.grey[300],
-                              size: 150.0,
+                AnimatedAlign(
+                  duration: const Duration(milliseconds: 700),
+                  alignment: pixels >= 1000
+                      ? const Alignment(0.0, 0.0)
+                      : const Alignment(-1.0, 0.0),
+                  child: AnimatedOpacity(
+                    duration: const Duration(milliseconds: 700),
+                    opacity: pixels >= 1000 ? 1.0 : 0.0,
+                    child: Container(
+                        child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Stack(
+                          clipBehavior: Clip.none,
+                          children: [
+                            Positioned(
+                              left: -70,
+                              top: -60,
+                              child: Icon(
+                                Icons.format_quote,
+                                color: Colors.grey[300],
+                                size: 150.0,
+                              ),
                             ),
-                          ),
-                          Text(
-                            "Execellent",
+                            Text(
+                              "Execellent",
+                              style: GoogleFonts.nunito(
+                                fontWeight: FontWeight.w800,
+                                fontSize: 30.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 20.0,
+                        ),
+                        Container(
+                          width: 360.0,
+                          child: Text(
+                            "To the Freelancer, I Found a tema for a project during one i met new cool specialist,and projects management has become much faster and simple",
                             style: GoogleFonts.nunito(
-                              fontWeight: FontWeight.w800,
-                              fontSize: 30.0,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14.0,
                             ),
+                            textAlign: TextAlign.center,
                           ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 20.0,
-                      ),
-                      Container(
-                        width: 360.0,
-                        child: Text(
-                          "To the Freelancer, I Found a tema for a project during one i met new cool specialist,and projects management has become much faster and simple",
+                        ),
+                        const SizedBox(
+                          height: 10.0,
+                        ),
+                        Text(
+                          "Commnet details",
                           style: GoogleFonts.nunito(
-                            fontWeight: FontWeight.w600,
+                            fontWeight: FontWeight.w800,
                             fontSize: 14.0,
                           ),
                           textAlign: TextAlign.center,
                         ),
-                      ),
-                      const SizedBox(
-                        height: 10.0,
-                      ),
-                      Text(
-                        "Commnet details",
-                        style: GoogleFonts.nunito(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 14.0,
+                        Container(
+                          height: 1.5,
+                          width: 100.0,
+                          color: Colors.black87,
                         ),
-                        textAlign: TextAlign.center,
-                      ),
-                      Container(
-                        height: 1.5,
-                        width: 100.0,
-                        color: Colors.black87,
-                      ),
-                    ],
-                  )),
+                      ],
+                    )),
+                  ),
                 ),
                 const TestimonialTile(
                   left: 780.0,
@@ -564,9 +608,14 @@ class HomePage extends StatelessWidget {
               height: 600.0,
               color: const Color.fromARGB(255, 4, 66, 117),
               child: Stack(children: [
-                Align(
-                  alignment: const Alignment(0.0, 1.0),
-                  child: Container(
+                AnimatedAlign(
+                  duration: const Duration(milliseconds: 600),
+                  alignment: pixels >= 1580
+                      ? const Alignment(0.0, 1.0)
+                      : const Alignment(1.0, 0.0),
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 700),
+                    color: pixels >= 1580 ? Colors.transparent : Colors.cyan,
                     height: 600.0,
                     width: 400.0,
                     child: Column(
@@ -648,8 +697,11 @@ class HomePage extends StatelessWidget {
                   bottom: 0.0,
                   child: Footer(),
                 ),
-                Align(
-                  alignment: const Alignment(1.18, 0.0),
+                AnimatedAlign(
+                  duration: const Duration(milliseconds: 600),
+                  alignment: pixels >= 1580
+                      ? const Alignment(1.18, 0.0)
+                      : const Alignment(-1.0, 0.0),
                   child: Container(
                     height: 200.0,
                     width: 200.0,
